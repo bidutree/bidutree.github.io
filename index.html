@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lars Björk — Journalist & Kommunikatör</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink:    #0f0f0e;
+      --paper:  #f5f2ed;
+      --muted:  #7a7570;
+      --rule:   #c8c2bb;
+      --accent: #9e1a1a;
+      --col:    680px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 17px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-weight: 300;
+      line-height: 1.7;
+      padding: 0 1.5rem;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── MASTHEAD ── */
+    header {
+      max-width: var(--col);
+      margin: 0 auto;
+      padding: 3.5rem 0 0;
+      animation: fadeUp .7s ease both;
+    }
+
+    .dateline {
+      font-family: 'DM Mono', monospace;
+      font-size: .72rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .dateline span::before {
+      content: '—';
+      margin-right: .4rem;
+      color: var(--rule);
+    }
+
+    .name-block {
+      margin-top: 1.1rem;
+      border-top: 3px solid var(--ink);
+      border-bottom: 1px solid var(--rule);
+      padding: .6rem 0 .7rem;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.6rem, 7vw, 4.2rem);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -.02em;
+    }
+
+    .tagline {
+      font-family: 'Source Serif 4', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--muted);
+      margin-top: .35rem;
+    }
+
+    /* ── NAVIGATION ── */
+    nav {
+      max-width: var(--col);
+      margin: 0 auto;
+      padding: .6rem 0 2rem;
+      display: flex;
+      gap: 1.8rem;
+      flex-wrap: wrap;
+      animation: fadeUp .7s .1s ease both;
+    }
+
+    nav a {
+      font-family: 'DM Mono', monospace;
+      font-size: .73rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1.5px solid transparent;
+      padding-bottom: 1px;
+      transition: border-color .2s, color .2s;
+    }
+
+    nav a:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* ── SECTIONS ── */
+    main { max-width: var(--col); margin: 0 auto; }
+
+    section {
+      padding: 3rem 0;
+      border-top: 1px solid var(--rule);
+      animation: fadeUp .7s ease both;
+    }
+
+    section:nth-of-type(1) { animation-delay: .15s; }
+    section:nth-of-type(2) { animation-delay: .25s; }
+    section:nth-of-type(3) { animation-delay: .35s; }
+    section:nth-of-type(4) { animation-delay: .45s; }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: .68rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.4rem;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: .9rem;
+    }
+
+    p { margin-bottom: 1rem; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── CV TABLE ── */
+    .cv-list { list-style: none; }
+
+    .cv-list li {
+      display: grid;
+      grid-template-columns: 7.5rem 1fr;
+      gap: 0 1.2rem;
+      padding: .65rem 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: .95rem;
+    }
+
+    .cv-list li:first-child { border-top: 1px solid var(--rule); }
+
+    .cv-year {
+      font-family: 'DM Mono', monospace;
+      font-size: .72rem;
+      color: var(--muted);
+      padding-top: .15rem;
+      white-space: nowrap;
+    }
+
+    .cv-role { font-weight: 400; }
+    .cv-role em { display: block; font-style: normal; color: var(--muted); font-size: .88rem; margin-top: .1rem; }
+
+    /* ── CLIPS ── */
+    .clips-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .clip {
+      padding: 1.1rem 1.1rem 1.1rem 1.2rem;
+      border-left: 3px solid var(--rule);
+      transition: border-color .2s;
+    }
+
+    .clip:hover { border-color: var(--accent); }
+
+    .clip-meta {
+      font-family: 'DM Mono', monospace;
+      font-size: .68rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: .35rem;
+    }
+
+    .clip h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: .3rem;
+    }
+
+    .clip a {
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .clip a:hover { color: var(--accent); }
+
+    .clip-desc { font-size: .9rem; color: var(--muted); }
+
+    /* ── KONTAKT ── */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem 2.5rem;
+      font-size: .95rem;
+    }
+
+    .contact-row a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 1px;
+      transition: color .2s, border-color .2s;
+    }
+
+    .contact-row a:hover { color: var(--accent); border-color: var(--accent); }
+
+    .contact-label {
+      font-family: 'DM Mono', monospace;
+      font-size: .68rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-bottom: .2rem;
+    }
+
+    .contact-item { display: flex; flex-direction: column; }
+
+    /* ── FOOTER ── */
+    footer {
+      max-width: var(--col);
+      margin: 0 auto;
+      padding: 2rem 0 3rem;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+
+    footer p {
+      font-family: 'DM Mono', monospace;
+      font-size: .68rem;
+      letter-spacing: .08em;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* ── ANIMATION ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 500px) {
+      .cv-list li { grid-template-columns: 1fr; }
+      .cv-year { margin-bottom: .2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MASTHEAD -->
+  <header>
+    <div class="dateline">
+      <span>Stockholm</span>
+      <span>Journalist &amp; kommunikatör</span>
+      <span>Tillgänglig för uppdrag</span>
+    </div>
+    <div class="name-block">
+      <h1>Lars<br>Björk</h1>
+      <p class="tagline">Tre decennier i nyhetsbranschen. Utrikesreporter, deskansvarig, skribent.</p>
+    </div>
+  </header>
+
+  <nav aria-label="Sidnavigation">
+    <a href="#om">Om</a>
+    <a href="#cv">Meritförteckning</a>
+    <a href="#artiklar">Artiklar</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+
+  <main>
+
+    <!-- OM -->
+    <section id="om" aria-labelledby="om-heading">
+      <p class="section-label">Om</p>
+      <h2>Journalist med världen som bevakningsområde</h2>
+      <p>
+        Jag har jobbat som journalist sedan 1990-talet med tyngdpunkt på utrikesnyheter, webb och radio. 
+        Åren har gett mig erfarenhet av hela produktionskedjan — från att jaga nyheter på plats till att redigera 
+        och publicera i realtid på deadlinestressade redaktioner.
+      </p>
+      <p>
+        Förutom svenska arbetar jag obehindrat på engelska, tyska och spanska, vilket har gjort det möjligt att 
+        bevaka internationella händelser direkt från källorna. Jag är van vid text, ljud och video och har ett 
+        genuint intresse för hur ny teknik förändrar journalistikens villkor.
+      </p>
+      <p>
+        Just nu är jag också aktiv inom kommunikation och har bland annat lett ett kommunikationsprojekt med 
+        fokus på sociala medier, och planerar ett samarbete med Stockholms universitetsbibliotek kring 
+        vetenskapskommunikation.
+      </p>
+    </section>
+
+    <!-- CV -->
+    <section id="cv" aria-labelledby="cv-heading">
+      <p class="section-label">Meritförteckning</p>
+      <h2>Erfarenhet</h2>
+      <ul class="cv-list">
+        <li>
+          <span class="cv-year">2024–nu</span>
+          <span class="cv-role">Frilansjournalist &amp; kommunikatör<em>Stockholm</em></span>
+        </li>
+        <li>
+          <span class="cv-year">Tidigare</span>
+          <span class="cv-role">Deskansvarig, Ekots utrikesredaktion<em>Sveriges Radio</em></span>
+        </li>
+        <li>
+          <span class="cv-year">Tidigare</span>
+          <span class="cv-role">Reporter &amp; deskansvarig, utrikesredaktionen<em>TT Nyhetsbyrån</em></span>
+        </li>
+        <li>
+          <span class="cv-year">Tidigare</span>
+          <span class="cv-role">Webbredaktionen<em>Dagens Nyheter</em></span>
+        </li>
+        <li>
+          <span class="cv-year">Tidigare</span>
+          <span class="cv-role">Webbredaktör, Ekot<em>Sveriges Radio</em></span>
+        </li>
+        <li>
+          <span class="cv-year">Tidigare</span>
+          <span class="cv-role">Trafikredaktionen<em>Sveriges Radio</em></span>
+        </li>
+        <li>
+          <span class="cv-year">Frilansat</span>
+          <span class="cv-role">Bidragit till<em>Ordfront, ETC, Expressen, TT, Studio Ett</em></span>
+        </li>
+      </ul>
+
+      <h2 style="margin-top:2rem;">Kompetenser</h2>
+      <ul class="cv-list">
+        <li>
+          <span class="cv-year">Språk</span>
+          <span class="cv-role">Svenska, engelska, tyska, spanska (C1)<em>Arbetar också på franska, italienska och rumänska</em></span>
+        </li>
+        <li>
+          <span class="cv-year">Teknik</span>
+          <span class="cv-role">Adobe CC, CMS-plattformar, AI-verktyg för audio och text<em>Video, ljud och skrivet format</em></span>
+        </li>
+        <li>
+          <span class="cv-year">Format</span>
+          <span class="cv-role">Webb, radio, print, sociala medier<em>Hela produktionskedjan</em></span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ARTIKLAR -->
+    <section id="artiklar" aria-labelledby="artiklar-heading">
+      <p class="section-label">Urval av arbeten</p>
+      <h2>Publicerat material</h2>
+      <div class="clips-grid">
+        <div class="clip">
+          <p class="clip-meta">TT Nyhetsbyrån · Utrikesreportage</p>
+          <h3><a href="#">[Titel på artikel eller reportage]</a></h3>
+          <p class="clip-desc">Kort beskrivning av innehåll, sammanhang och varför det är relevant. Ersätt med faktisk länk och text.</p>
+        </div>
+        <div class="clip">
+          <p class="clip-meta">Sveriges Radio · Ekot</p>
+          <h3><a href="#">[Titel på inslag eller webbtext]</a></h3>
+          <p class="clip-desc">Kort beskrivning av innehåll och sammanhang. Länka gärna till SVT:s arkiv, Ekot eller egen kopia.</p>
+        </div>
+        <div class="clip">
+          <p class="clip-meta">Ordfront / ETC · Reportage</p>
+          <h3><a href="#">[Titel på frilansmaterial]</a></h3>
+          <p class="clip-desc">Beskrivning av artikeln och ämnet. Bygg ut listan med fler klipp efter behov.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section id="kontakt" aria-labelledby="kontakt-heading">
+      <p class="section-label">Kontakt</p>
+      <h2>Ta kontakt</h2>
+      <p style="margin-bottom:1.8rem;">
+        Tillgänglig för journalistiska uppdrag, kommunikationsprojekt och samarbeten.
+      </p>
+      <div class="contact-row">
+        <div class="contact-item">
+          <span class="contact-label">E-post</span>
+          <a href="/cdn-cgi/l/email-protection#482c2126082d38273b3c663b2d"><span class="__cf_email__" data-cfemail="482c2126082d38273b3c663b2d">[email&#160;protected]</span></a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Telefon</span>
+          <a href="tel:+46700000000">070-000 00 00</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">GitHub</span>
+          <a href="https://github.com/bidutree" target="_blank" rel="noopener">github.com/bidutree</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Lars Björk · Stockholm</p>
+    <p id="year-label"></p>
+  </footer>
+
+ 
